@@ -12,6 +12,10 @@ th,td{text-align:left;vertical-align:top;padding:.35em .6em;border-bottom:1px so
 th{font-weight:600}
 aside{display:none}
 #nav{position:fixed;left:0;right:0;bottom:0;height:64px;background:#f1f2f6;display:flex;align-items:center;justify-content:center;gap:8px;z-index:3}
+#home{position:absolute;left:24px;top:8px;height:48px;display:flex;align-items:center;gap:8px;padding:0 16px 0 8px;color:#060923;text-decoration:none;font-size:16px;font-weight:500}
+#home svg{width:24px;height:24px}
+#home:hover{background:#060923;color:#ffffff}
+@media (max-width:759px){#home span{display:none}#home{padding:0 12px;left:8px}}
 #nav button{font:inherit;border:none;background:transparent;color:#060923;height:48px;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center}
 #nav .arr{width:48px}
 #nav .arr:disabled{color:#d5d8e2;cursor:default}
@@ -30,23 +34,26 @@ aside{display:none}
 </style></head><body><div id="stage"><div class="s"><section id="cover" data-transition="fade" style="background:#ffffff;color:#060923;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
 <div style="display:flex;flex-direction:column;gap:16px">
 <hr style="border-top:4px solid #060923;width:1664px">
-<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#575c72">Исследование · октябрь 2026</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#575c72">Исследование 01 · октябрь 2026</p>
 </div>
-<div style="display:flex;flex-direction:column;gap:40px">
-<h1 style="font-size:136px;font-weight:700;line-height:1.0;letter-spacing:-6px;color:#060923;width:1400px">Рынок слотов и провайдеров 2026</h1>
-<p style="font-size:36px;line-height:1.3;color:#575c72;width:1100px">Что популярно, кто делает хиты, как рынок выглядит по странам — и у кого рост, у кого падение</p>
+<div style="display:flex;gap:48px;align-items:flex-start">
+<p style="font-size:400px;font-weight:700;line-height:0.85;letter-spacing:-20px;font-variant-numeric:tabular-nums;color:#4f48d5;width:520px">01</p>
+<div style="display:flex;flex-direction:column;gap:32px;width:1096px">
+<h1 style="font-size:108px;font-weight:700;line-height:1.0;letter-spacing:-4.86px;color:#060923">Рынок слотов и провайдеров 2026</h1>
+<p style="font-size:32px;line-height:1.35;color:#575c72">Что популярно, кто делает хиты, как рынок выглядит по странам — и у кого рост, у кого падение</p>
+</div>
 </div>
 <div style="display:flex;gap:24px">
 <div style="flex:1;display:flex;flex-direction:column;gap:8px;border-top:1px solid #d5d8e2;padding:24px 0 0 0">
-<p style="font-size:44px;font-weight:500;letter-spacing:-0.88px;font-variant-numeric:tabular-nums;color:#4f48d5">6</p>
+<p style="font-size:44px;font-weight:500;letter-spacing:-0.88px;font-variant-numeric:tabular-nums;color:#060923">6</p>
 <p style="font-size:24px;color:#575c72">направлений исследования</p>
 </div>
 <div style="flex:1;display:flex;flex-direction:column;gap:8px;border-top:1px solid #d5d8e2;padding:24px 0 0 0">
-<p style="font-size:44px;font-weight:500;letter-spacing:-0.88px;font-variant-numeric:tabular-nums;color:#4f48d5">~30</p>
+<p style="font-size:44px;font-weight:500;letter-spacing:-0.88px;font-variant-numeric:tabular-nums;color:#060923">~30</p>
 <p style="font-size:24px;color:#575c72">стран и регионов</p>
 </div>
 <div style="flex:1;display:flex;flex-direction:column;gap:8px;border-top:1px solid #d5d8e2;padding:24px 0 0 0">
-<p style="font-size:44px;font-weight:500;letter-spacing:-0.88px;font-variant-numeric:tabular-nums;color:#4f48d5">2025–2026</p>
+<p style="font-size:44px;font-weight:500;letter-spacing:-0.88px;font-variant-numeric:tabular-nums;color:#060923">2025–2026</p>
 <p style="font-size:24px;color:#575c72">период данных</p>
 </div>
 </div>
@@ -504,6 +511,7 @@ aside{display:none}
 </section></div></div>
 <div id="strip" aria-label="Все слайды"></div>
 <nav id="nav">
+<a id="home" href="../" aria-label="Все исследования"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12 H5 M11 6 L5 12 L11 18"/></svg><span>Все исследования</span></a>
 <button class="arr" id="prev" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5 L8 12 L15 19"/></svg></button>
 <button id="num" aria-label="Показать все слайды"></button>
 <button class="arr" id="next" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5 L16 12 L9 19"/></svg></button>
