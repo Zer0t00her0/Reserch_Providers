@@ -12,7 +12,7 @@ th,td{text-align:left;vertical-align:top;padding:.35em .6em;border-bottom:1px so
 th{font-weight:600}
 aside{display:none}
 #nav{position:fixed;left:0;right:0;bottom:0;height:64px;background:#f1f2f6;display:flex;align-items:center;justify-content:center;gap:8px;z-index:3}
-#top{position:fixed;left:0;right:0;top:0;height:56px;background:#f1f2f6;display:flex;align-items:center;padding:0 16px;z-index:3}
+#top{position:fixed;gap:16px;left:0;right:0;top:0;height:56px;background:#f1f2f6;display:flex;align-items:center;padding:0 16px;z-index:3}
 #home{height:40px;display:flex;align-items:center;gap:8px;padding:0 16px 0 8px;color:#060923;text-decoration:none;font-size:16px;font-weight:500}
 #home svg{width:24px;height:24px}
 #home:hover{background:#060923;color:#ffffff}
@@ -31,6 +31,11 @@ aside{display:none}
 .th.cur .box{border:4px solid #4f48d5}
 .th.cur .n{color:#4f48d5}
 .th:hover .n{color:#060923}
+
+.lang{margin-left:auto;display:flex;gap:0;border:1px solid #060923}
+.lang a,.lang span{display:flex;align-items:center;justify-content:center;width:48px;height:32px;font-size:14px;font-weight:600;letter-spacing:.96px;text-decoration:none;color:#060923}
+.lang span{background:#060923;color:#ffffff}
+.lang a:hover{background:#d5d8e2}
 </style></head><body><div id="stage"><div class="s"><section id="cover" data-transition="fade" style="background:#ffffff;color:#060923;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
 <div style="display:flex;flex-direction:column;gap:16px">
 <hr style="border-top:4px solid #060923;width:1664px">
@@ -511,10 +516,11 @@ aside{display:none}
 </section></div></div>
 <div id="strip" aria-label="Все слайды"></div>
 <header id="top"><a id="home" href="../" aria-label="Все исследования"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12 H5 M11 6 L5 12 L11 18"/></svg><span>Все исследования</span></a>
+<div class="lang"><span>RU</span><a class="sw" href="../en/market/" hreflang="en">EN</a></div>
 </header>
 <nav id="nav">
 <button class="arr" id="prev" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5 L8 12 L15 19"/></svg></button>
-<button id="num" aria-label="Показать все слайды"></button>
+<button id="num" aria-label="Все слайды"></button>
 <button class="arr" id="next" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5 L16 12 L9 19"/></svg></button>
 </nav>
 <script>
@@ -594,6 +600,7 @@ aside{display:none}
     wheelLock=true;show(e.deltaY>0?i+1:i-1);setTimeout(function(){wheelLock=false;},500);
   },{passive:true});
   window.addEventListener('resize',fit);window.addEventListener('orientationchange',fit);window.addEventListener('load',fit);if(window.visualViewport){window.visualViewport.addEventListener('resize',fit);}
+  [].forEach.call(document.querySelectorAll('a.sw'),function(a){a.addEventListener('click',function(){a.href=a.getAttribute('href').split('#')[0]+'#'+(i+1);});});
   window.addEventListener('hashchange',function(){show(fromHash(),false);});
   fit();show(fromHash(),false);
 })();
