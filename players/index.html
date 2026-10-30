@@ -12,10 +12,10 @@ th,td{text-align:left;vertical-align:top;padding:.35em .6em;border-bottom:1px so
 th{font-weight:600}
 aside{display:none}
 #nav{position:fixed;left:0;right:0;bottom:0;height:64px;background:#f1f2f6;display:flex;align-items:center;justify-content:center;gap:8px;z-index:3}
-#home{position:absolute;left:24px;top:8px;height:48px;display:flex;align-items:center;gap:8px;padding:0 16px 0 8px;color:#060923;text-decoration:none;font-size:16px;font-weight:500}
+#top{position:fixed;left:0;right:0;top:0;height:56px;background:#f1f2f6;display:flex;align-items:center;padding:0 16px;z-index:3}
+#home{height:40px;display:flex;align-items:center;gap:8px;padding:0 16px 0 8px;color:#060923;text-decoration:none;font-size:16px;font-weight:500}
 #home svg{width:24px;height:24px}
 #home:hover{background:#060923;color:#ffffff}
-@media (max-width:759px){#home span{display:none}#home{padding:0 12px;left:8px}}
 #nav button{font:inherit;border:none;background:transparent;color:#060923;height:48px;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center}
 #nav .arr{width:48px}
 #nav .arr:disabled{color:#d5d8e2;cursor:default}
@@ -532,8 +532,9 @@ aside{display:none}
 <aside>На рынке, где лидеры почти одинаковы по механике, а игроки массово подозревают «скриптовость», выигрывает тот, кто прозрачен. Это совпадает и с направлением регулирования в Великобритании и Бразилии, и с тем, за что энтузиасты ценят Hacksaw.</aside>
 </section></div></div>
 <div id="strip" aria-label="Все слайды"></div>
+<header id="top"><a id="home" href="../" aria-label="Все исследования"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12 H5 M11 6 L5 12 L11 18"/></svg><span>Все исследования</span></a>
+</header>
 <nav id="nav">
-<a id="home" href="../" aria-label="Все исследования"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12 H5 M11 6 L5 12 L11 18"/></svg><span>Все исследования</span></a>
 <button class="arr" id="prev" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5 L8 12 L15 19"/></svg></button>
 <button id="num" aria-label="Показать все слайды"></button>
 <button class="arr" id="next" aria-label="Следующий слайд"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5 L16 12 L9 19"/></svg></button>
@@ -556,10 +557,14 @@ aside{display:none}
     t.addEventListener('click',function(){show(j);toggleStrip(false);});
     strip.appendChild(t);return t;
   });
+  var TOP=56;
   function fit(){
-    var h=window.innerHeight-NAV;
-    var k=Math.min(window.innerWidth/1920,h/1080);
-    var x=(window.innerWidth-1920*k)/2, y=(h-1080*k)/2;
+    var vv=window.visualViewport;
+    var W=vv?vv.width:document.documentElement.clientWidth;
+    var Hs=vv?vv.height:document.documentElement.clientHeight;
+    var h=Hs-NAV-TOP-16;
+    var k=Math.min((W-32)/1920,h/1080);
+    var x=(W-1920*k)/2, y=TOP+8+(h-1080*k)/2;
     stage.style.transform='translate('+x+'px,'+y+'px) scale('+k+')';
   }
   function toggleStrip(open){
@@ -592,7 +597,7 @@ aside{display:none}
     else if(k==='End'){show(total-1);}
   });
   document.addEventListener('click',function(e){
-    if(e.target.closest('a,#nav,#strip'))return;
+    if(e.target.closest('a,#nav,#strip,#top'))return;
     if(strip.classList.contains('open')){toggleStrip(false);return;}
     show(e.clientX<window.innerWidth/3?i-1:i+1);
   });
@@ -610,7 +615,7 @@ aside{display:none}
     if(wheelLock||Math.abs(e.deltaY)<20)return;
     wheelLock=true;show(e.deltaY>0?i+1:i-1);setTimeout(function(){wheelLock=false;},500);
   },{passive:true});
-  window.addEventListener('resize',fit);
+  window.addEventListener('resize',fit);window.addEventListener('orientationchange',fit);window.addEventListener('load',fit);if(window.visualViewport){window.visualViewport.addEventListener('resize',fit);}
   window.addEventListener('hashchange',function(){show(fromHash(),false);});
   fit();show(fromHash(),false);
 })();
